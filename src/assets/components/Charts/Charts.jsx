@@ -36,7 +36,7 @@ const Charts = () => {
 
     return (
         <div>
-            <h2>Books: {readBooks.length}</h2>
+            <h2 className="text-2xl mb-5">Books: {readBooks.length}</h2>
             <BarChart width={1500} height={500} data={readBooks} >
             <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="bookName" />
