@@ -1,5 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { saveBooks } from "../../LocalStorage";
+import { getStoredBooksId, saveBooks } from "../../LocalStorage";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { saveBooks2 } from "../../../LocalStorage2";
@@ -16,8 +16,14 @@ const BookDetails = () => {
         toast('Successfully added to read booklist')
     }
     const handleWishListBooks = () => {
-        saveBooks2(idInt);
+        const readBooksIds = getStoredBooksId();
+        if(readBooksIds.includes(idInt)){
+            toast.error('This book is already in the read book list.')
+        }
+        else{
+            saveBooks2(idInt);
         toast('Successfully added to Wishlist')
+        }
     }
     return (
         <div className="md:flex gap-5">
